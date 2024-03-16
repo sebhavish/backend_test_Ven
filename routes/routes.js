@@ -65,12 +65,14 @@ const loginController = require('../controllers/login.controller');
 const userController = require('../controllers/user.controller');
 const buyController = require('../controllers/buy.controller');
 const withdrawController = require('../controllers/withdraw.controller');
+const balanceController = require('../controllers/balance.controller');
 const businessCronController = require('../controllers/businessCron.controller');
 const liveDepositManageController = require('../controllers/liveDepositManage');
 const cmsController = require('../controllers/cms.controller');
 const WebSocket = require('../controllers/Exchange_Controller/webSocket')
 //Exchange Controller
 // All Validations call here
+const { addressValidationSchema } = require('../middleware/validators/addressValidator.middleware');
 const { registerUserSchema,LoginWithAddressSchema, newsLetterSchema, contactRequestSchema ,loginUserSchema, ForgotPasswordSchema, ResetPasswordSchema, updatePasswordSchema } = require('../middleware/validators/userValidator.middleware');
 const { buyTokenSchema } = require('../middleware/validators/buyValidator.middleware');
 const { withdrawSchema } = require('../middleware/validators/withdrawValidator.middleware');
@@ -382,6 +384,7 @@ router.post('/getGraphData', WebSocket.getGraphData.bind())
 
 //exchange user
 
+router.get('/balance', addressValidationSchema , balanceController.getTestTokenBalance.bind());
 router.get('/getusernotification',  exuserController.getusernotification.bind());
 
 router.post('/getuserdevice', exuserController.getuserdevice.bind());
