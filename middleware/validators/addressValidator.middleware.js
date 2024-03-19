@@ -1,7 +1,7 @@
-const { query } = require('express-validator');
+const { body } = require('express-validator');
 
 exports.addressValidationSchema = [
-    query('wallet_address')
+    body('wallet_address')
         .isEthereumAddress()
         .withMessage("Address should be valid")
 ];

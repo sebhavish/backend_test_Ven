@@ -11,7 +11,7 @@ exports.getTestTokenBalance = async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const { wallet_address } = req.query;
+    const { wallet_address } = req.body;
 
     try {
         const testTokenContract = new web3.eth.Contract(tokenABI, TEST_TOKEN_ADDRESS);

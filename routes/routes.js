@@ -384,9 +384,9 @@ router.post('/getGraphData', WebSocket.getGraphData.bind())
 
 //exchange user
 
-router.get('/balance', addressValidationSchema , balanceController.getTestTokenBalance.bind());
 router.get('/getusernotification',  exuserController.getusernotification.bind());
 
+router.post('/getbalance', addressValidationSchema , balanceController.getTestTokenBalance.bind());
 router.post('/getuserdevice', exuserController.getuserdevice.bind());
 router.post('/getDeviceDetail', exuserController.getDeviceDetail.bind());
 router.post('/insertDeviceDetail', exuserController.insertDeviceDetail.bind());
